@@ -1,4 +1,3 @@
-/* Reset & Base
 * {
     margin: 0;
     padding: 0;
@@ -7,16 +6,17 @@
 html {
     font-size: 62.5%;
 }
-body,
-html {
-    height: 100%;
-
+body {
+    overflow-x: hidden;
     font-family: 'Pretendard', sans-serif;
-    background-color: #fff;
-    color: #111;
 }
-
-
+.mt-10 {
+    margin-top: 10px !important;
+}
+.mt-1 {
+    margin-top: 0.25rem !important;
+}
+/* 커스텀 커서 */
 .custom-cursor {
     position: fixed;
     top: 0;
@@ -34,7 +34,7 @@ html {
 .custom-cursor.hover-on-project {
     width: 12rem;
     height: 12rem;
-    background-color: white;
+    background-color: #fff;
     border: none;
     color: black;
     display: flex;
@@ -48,79 +48,128 @@ html {
     content: 'VIEW PROJECT →';
 }
 
-.section {
+/* section 공통 */
+section {
     width: 100%;
-}
-
-
-.homepage {
+    margin: 200px auto 0;
     position: relative;
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
 }
-.homepage .project-title {
-    display: flex;
-    height: 100%;
+.section-body {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    padding: 0 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.section-content {
+    position: sticky;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 40px 0;
     flex-direction: column;
+    display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
+    word-break: keep-all;
+    word-wrap: break-word;
+    z-index: 10;
 }
-.homepage .project-title h1 {
+
+.section-content .title {
+    font-size: 64px;
     font-weight: 800;
-    font-size: 6rem;
-    color: #0c0c0d;
-    line-height: 1.2;
-    letter-spacing: -3.3px;
+    margin-bottom: 24px;
 }
-.homepage .project-title p {
+
+.section-content .description {
+    font-size: 20px;
+    color: #333;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.section-content .highlight {
+    color: #00c8c8; /* 포인트 컬러 */
+    font-weight: 600;
+}
+
+.all-works-btn {
     margin-top: 40px;
-    margin-bottom: 60px;
-    font-size: 2.4rem;
-    line-height: 30px;
-}
-.homepage .project-title p span {
-    color: #00c2b2;
-}
-.horizontal-scroll {
+    width: 120px;
+    height: 120px;
+    background-color: #111;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.all-works-btn .plus {
+    font-size: 20px;
+    margin-top: 4px;
+}
+
+/* homepage */
+.horizontal-scroll {
+    width: 100%;
     height: 100vh;
     position: relative;
     overflow: hidden;
 }
-.homepage .horizontal-scroll__wrapper {
+.horizontal-scroll__wrapper {
     display: flex;
     width: max-content;
     height: 100%;
 }
-.homepage .horizontal-scroll__wrapper > * {
-    width: 33.3333%;
-    flex: 1 0 33.3333%;
-}
-.homepage .horizontal-scroll__wrapper .bg-light {
-    background-color: #fff;
-}
-
-.homepage .horizontal-scroll__wrapper .project {
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    cursor: pointer;
-    transition: flex 0.4s ease;
+.project,
+.bg-light {
     flex-shrink: 0;
+    width: 33.3333vw; /* 한 화면에 3개씩 보이도록 설정 */
+    height: 100vh;
+    position: relative;
+}
+.project img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.bg-light {
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.project-title {
+    text-align: center;
+}
+.project-title h1 {
+    font-size: 3rem;
+}
+.project-title p {
+    font-size: 1.2rem;
 }
 
-.homepage .horizontal-scroll__wrapper:hover .project {
-    flex: 0.8 0 30.3333%;
+/* 세로 섹션 */
+.tit-box {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
 }
-.homepage .horizontal-scroll__wrapper .project:hover {
-    flex: 2 0 36.3333%;
-    z-index: 10;
+.more-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
 }
-
 .project-1 {
     background: linear-gradient(135deg, #ffa800, #ff5d17);
 }
@@ -136,355 +185,125 @@ html {
 .project-5 {
     background: linear-gradient(135deg, #fff6a5, #ffb1b1);
 }
-.project .project-item {
-    overflow: hidden;
-    position: relative;
-    display: block;
-    z-index: 50;
-    width: 100%;
-}
-.project .project-item .thumbnail {
-    width: 100%;
-    position: relative;
-    margin: 0 auto;
-    padding: 60px 0 30px;
-    box-sizing: border-box;
-}
-.project .project-item .thumbnail img {
-    display: block;
-    width: 100%;
-    object-fit: cover;
-    height: auto;
-}
-.project .project-item .thumbnail .thumbnail-num {
-    position: absolute;
-    width: 7.2rem;
-    height: 7.2rem;
-    bottom: 15%;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 900;
-    border: 1px solid #fff;
-    border-radius: 50%;
-    padding: 1.6em;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.5;
-}
-.project .project-item__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.25));
-    opacity: 0.2;
-    transition: opacity 0.3s ease;
-}
-.project:hover .project-item__overlay {
-    opacity: 0;
-}
-
-.project .project-item .description {
-    width: 100%;
-    position: relative;
-    text-align: left;
-    margin: 0 auto;
-    padding: 0 2rem;
-    box-sizing: border-box;
-}
-
-.project .project-item .description p {
-    display: inline-block;
-    width: calc(50% - 4px);
-    vertical-align: top;
-    text-align: left;
-    position: relative;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #000;
-}
-.project .project-item .description p:nth-child(2) {
-    text-align: right;
-}
-.project .project-item h3 {
-    color: #fff;
-    mix-blend-mode: lighten;
-    font-size: 4.8rem;
-    font-weight: 900;
-}
-
-
-section.design {
-    min-height: 100vh;
-
-}
-
-.center-text-wrapper {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 10;
-}
-
-.title {
-    font-size: 4rem;
-    font-weight: 700;
-    margin: 0;
-}
-
-.desc {
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    color: #333;
-}
-
-.highlight {
-    color: #00c8c8;
-    font-weight: 600;
-} */
-/* 전체 초기화 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html {
-  font-size: 62.5%;
-}
-body {
-  overflow-x: hidden;
-  font-family: "Pretendard", sans-serif;
-}
-
-/* 커스텀 커서 */
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 6rem;
-  height: 6rem;
-  border: 1px solid #00c8c8;
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: transform 0.08s ease;
-  z-index: 9999;
-}
-
-.custom-cursor.hover-on-project {
-  width: 12rem;
-  height: 12rem;
-  background-color: #fff;
-  border: none;
-  color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.custom-cursor.hover-on-project::after {
-  content: "VIEW PROJECT →";
-}
-
-section {
-  width: 100%;
-  margin: 200px auto 0;
-  position: relative;
-}
-/* homepage */
-/* 가로 스크롤 섹션 */
-.horizontal-scroll {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-}
-.horizontal-scroll__wrapper {
-  display: flex;
-  width: max-content;
-  height: 100%;
-}
-.project,
-.bg-light {
-  flex-shrink: 0;
-  width: 33.3333vw; /* 한 화면에 3개씩 보이도록 설정 */
-  height: 100vh;
-  position: relative;
-}
-.project img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.bg-light {
-  background: #f5f5f5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.project-title {
-  text-align: center;
-}
-.project-title h1 {
-  font-size: 3rem;
-}
-.project-title p {
-  font-size: 1.2rem;
-}
-
-/* 세로 섹션 */
-.tit-box {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-.more-button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 24px;
-  background: #000;
-  color: #fff;
-  text-decoration: none;
-}
-.project-1 {
-  background: linear-gradient(135deg, #ffa800, #ff5d17);
-}
-.project-2 {
-  background: linear-gradient(135deg, #12d6f0, #12f093);
-}
-.project-3 {
-  background: linear-gradient(135deg, #3f1ca0, #a912f0);
-}
-.project-4 {
-  background: linear-gradient(135deg, #eb3656, #fea032);
-}
-.project-5 {
-  background: linear-gradient(135deg, #fff6a5, #ffb1b1);
-}
 
 /* design */
 .design {
-  position: relative;
-  min-height: 200vh;
+    position: relative;
+    min-height: 200vh;
 }
 
-.design-body {
-  width: 100%;
-  height: 200vh;
-  position: relative;
-  padding: 0 20px;
-  margin: 0 auto;
-  box-sizing: border-box;
+.design .section-body {
+    height: 200vh;
 }
 @media screen and (max-width: 1920px) {
-  .design-body {
-    max-width: 1480px;
-  }
+    .section-body {
+        max-width: 1480px;
+    }
 }
 
-.design-content {
-  position: sticky;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 40px 0;
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  word-break: keep-all;
-  word-wrap: break-word;
-  z-index: 10;
-}
-
-.design-content .title {
-  font-size: 64px;
-  font-weight: 800;
-  margin-bottom: 24px;
-}
-
-.design-content .description {
-  font-size: 20px;
-  color: #333;
-  line-height: 1.6;
-}
-
-.design-content .highlight {
-  color: #00c8c8; /* 포인트 컬러 */
-  font-weight: 600;
-}
-
-.all-works-btn {
-  margin-top: 40px;
-  width: 120px;
-  height: 120px;
-  background-color: #111;
-  color: white;
-  border-radius: 50%;
-  border: none;
-  font-weight: bold;
-  font-size: 14px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.all-works-btn .plus {
-  font-size: 20px;
-  margin-top: 4px;
-}
 .img-wrap {
-  height: 100%;
-  /* margin-top: 150px; */
+    height: 100%;
+    /* margin-top: 150px; */
 }
 .img-wrap .img-con {
-  padding-left: 0;
+    padding-left: 0;
 }
 .img-wrap .img-con > li {
-  width: 31.5%;
-  opacity: 0;
-  transform: scale(0.5);
-  transition: transform 0.4s ease, opacity 0.4s ease;
+    width: 31.5%;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: transform 0.4s ease, opacity 0.4s ease;
 }
 .img-wrap .img-con > li + li {
-  margin-top: -60px;
+    margin-top: -60px;
 }
 .img-wrap .img-con > li:nth-child(odd) {
-  margin-left: auto;
+    margin-left: auto;
 }
 
 .img-wrap .img-con > li a {
-  display: block;
-  width: 100%;
-  position: relative;
+    display: block;
+    width: 100%;
+    position: relative;
 }
 
 .img-wrap .img-con > li a h3 {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  opacity: 0.6;
-  text-align: center;
-  font-size: 3rem;
-  font-weight: 00;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    opacity: 0.6;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 00;
 }
 .img-wrap .img-con > li a img {
-  display: block;
-  width: 100%;
+    display: block;
+    width: 100%;
+}
+
+/* shopping */
+.shopping.section {
+    height: 200vh;
+    transform: translateY(200px);
+}
+.shopping.section .section-body {
+    height: 200vh;
+}
+.divide-panel {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+}
+.divide-panel > * {
+    width: 50%;
+}
+.section.shopping .con-list {
+    padding-left: 0;
+}
+.section.shopping .con-list .con {
+    transition: unset;
+}
+.shopping.section .con-list .con:not(:first-child) {
+    margin-top: 20px;
+}
+.section.shopping .con-list .con .img {
+    position: relative;
+}
+.section.shopping h3 {
+    font-size: 4rem;
+    color: #0c0c0d;
+    letter-spacing: -0.2rem;
+    font-weight: 300;
+    line-height: 1.25;
+}
+.categories {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.categories li {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    line-height: 1;
+}
+.section.shopping .subheading {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #666;
+    letter-spacing: -0.01rem;
+    text-transform: uppercase;
+}
+
+.section-column {
+    position: relative;
+}
+.shopping.section .section-content {
+    top: 0;
+    transform: translateY(0);
+    padding: 0;
 }
