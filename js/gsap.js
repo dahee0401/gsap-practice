@@ -72,4 +72,37 @@ $(function () {
             anticipatePin: 1,
         },
     });
+
+    // mobile
+    const $list = $('.mobile-list');
+    const totalWidth = $list[0].scrollWidth;
+    const viewportWidth = $(window).width();
+    const scrollDistance = totalWidth - viewportWidth;
+
+    // 리스트 전체를 왼쪽으로 이동
+    gsap.to($list, {
+        x: -scrollDistance,
+        ease: 'none',
+        scrollTrigger: {
+            trigger: '.mobile.section',
+            start: 'top top',
+            end: () => '+=' + scrollDistance,
+            scrub: true,
+            pin: true,
+            anticipatePin: 1,
+        },
+    });
+
+    // 각 이미지에 회전 효과 부여 (스크롤에 따라 반시계 방향)
+    $('.mobile-list__item').each(function (i, el) {
+        gsap.to(el, {
+            rotate: -10,
+            scrollTrigger: {
+                trigger: el,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true,
+            },
+        });
+    });
 });
