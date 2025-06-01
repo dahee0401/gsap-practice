@@ -17,4 +17,23 @@ $(function () {
     .on("mouseleave", function () {
       $cursor.removeClass("hover-on-project");
     });
+
+  //homepage - project 호버시
+  $(".project")
+    .on("mouseenter", function () {
+      $cursor.addClass("hover-on-project");
+    })
+    .on("mouseleave", function () {
+      $cursor.removeClass("hover-on-project");
+    });
+
+  $(".project").hover(
+    function () {
+      $(".project").addClass("dimmed").removeClass("hovered");
+      $(this).addClass("hovered").removeClass("dimmed");
+    },
+    function () {
+      $(".project").removeClass("dimmed hovered");
+    }
+  );
 });
